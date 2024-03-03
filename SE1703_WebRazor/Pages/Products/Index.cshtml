@@ -1,0 +1,72 @@
+﻿@page
+@model SE1703_WebRazor.Pages.Products.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Product List</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="ProductName">Product Name:</label>
+        <input type="text" id="ProductName" name="ProductName" asp-for="ProductName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="UnitPrice">Unit Price:</label>
+        <input asp-for="@Model.UnitPrice" value="@ViewBag.UnitPrice" name="UnitPrice" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].UnitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].UnitInStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Product) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ProductId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ProductId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ProductId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

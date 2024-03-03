@@ -1,0 +1,16 @@
+﻿@page
+@model SE1703_WebRazor.Pages.MenuModel
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<h1>Menu</h1>
+
+<div>
+    <a asp-page="/Categories/Index" class="btn btn-primary">Category</a>
+    <a asp-page="/Products/Index" class="btn btn-primary">Product</a>
+    <a asp-page="/Members/Index" class="btn btn-primary">Member</a>
+    <a asp-page="/Report/Report" class="btn btn-primary">Report</a>
+
+    <a asp-page="/Index" class="btn btn-primary">Logout</a>
+</div>

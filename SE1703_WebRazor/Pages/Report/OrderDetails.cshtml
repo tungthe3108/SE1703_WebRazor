@@ -1,0 +1,45 @@
+﻿@page
+@model SE1703_WebRazor.Pages.Report.OrderDetailsModel
+@{
+}
+
+<h1>Order Details</h1>
+<h5>By Khanh</h5>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Product Id
+            </th>
+            <th>
+                Unit Price
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Discount
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>
+                @Html.DisplayFor(modelItem => Model.OrderDetail.ProductId)
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => Model.OrderDetail.UnitPrice)
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => Model.OrderDetail.Quantity)
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => Model.OrderDetail.Discount)
+                </td>
+            </tr>
+    </tbody>
+</table>
+<div>
+    <a asp-page="/Report/Report">Back to List</a>
+</div>

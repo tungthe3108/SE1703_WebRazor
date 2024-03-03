@@ -1,0 +1,72 @@
+﻿@page
+@model SE1703_WebRazor.Pages.Report.ReportModel
+@{
+}
+<h1>Report</h1>
+<h5>By Khanh</h5>
+
+<form method="post">
+    <label>From:</label>
+    <input type="date" asp-for="@Model.FromDate" name="FromDate" />
+    <label>To:</label>
+    <input type="date" asp-for="@Model.ToDate" name="ToDate" />
+    <label>Sort:</label>
+    <select asp-for="@Model.SortDirection" name="SortDirection">
+        <option value="asc">Sort Inc</option>
+        <option value="desc">Sort Desc</option>
+    </select>
+    <button type="submit">Search</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Order Id
+            </th>
+            <th>
+                Member Id
+            </th>
+            <th>
+                Order Date
+            </th>
+            <th>
+                Require Date
+            </th>
+            <th>
+                Shipped Date
+            </th>
+            <th>
+                Freight
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Orders)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MemberId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequiredDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShippedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Freight)
+                </td>
+                <td>
+                    <a asp-page="/Report/OrderDetails" asp-route-id="@item.OrderId">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    </table>
